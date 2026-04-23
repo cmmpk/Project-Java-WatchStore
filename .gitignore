@@ -3,3 +3,38 @@
 .project
 .settings/
 bin/
+
+# Maven / Gradle
+target/
+build/
+.gradle/
+
+# Windows
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Mac
+.DS_Store
+
+# Multimedia pesado NO permitido
+*.mp4
+*.mp3
+*.avi
+*.mkv
+*.wav
+*.zip
+*.rar
+*.psd
+*.ai
+
+# Imágenes pesadas (más de lo que necesita una UI)
+*.gif
+*.tiff
+*.bmp
+*.raw
+
+# Logs y temporales
+*.log
+*.tmp
+*.bak
