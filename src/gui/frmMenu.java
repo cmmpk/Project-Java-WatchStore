@@ -125,6 +125,7 @@ public class frmMenu extends JFrame implements ActionListener {
 		frm.setVisible(true);
 	}
 	protected void actionPerformedMntmListar(ActionEvent e) {
+		//listar productos en formulario
 		frmListar frm= new frmListar();
 		frm.setVisible(true);
 	}
