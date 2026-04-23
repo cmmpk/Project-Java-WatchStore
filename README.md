@@ -1,6 +1,6 @@
-# Nombre del Proyecto
+# Proyecto
 
-Descripción breve del proyecto.
+Tienda de Relojes Java v1.0 
 
 ## Requisitos
 - JDK 21+
