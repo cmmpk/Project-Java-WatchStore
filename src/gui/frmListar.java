@@ -80,32 +80,32 @@ public class frmListar extends JDialog implements ActionListener {
 		txtS.setText("LISTADO DE PRODUCTOS\n\n");
 		txtS.append("Modelo \t: "+Variables.modelo0+"\n");
 		txtS.append("Precio \t: "+Variables.precio0+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo0+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho0+"\n");
-		txtS.append("Alto \t: "+Variables.alto0+"\n\n");
+		txtS.append("Marca \t: "+Variables.marca0+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro0+"\n");
+		txtS.append("Resistencia \t: "+Variables.resistencia0+"\n\n");
 		
 		txtS.append("Modelo \t: "+Variables.modelo1+"\n");
 		txtS.append("Precio \t: "+Variables.precio1+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo1+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho1+"\n");
-		txtS.append("Alto \t: "+Variables.alto1+"\n\n");
+		txtS.append("Marca \t: "+Variables.marca1+"\n");
+		txtS.append("Diametro\t: "+Variables.diametro1+"\n");
+		txtS.append("Resistencia \t: "+Variables.resistencia1+"\n\n");
 		
 		txtS.append("Modelo \t: "+Variables.modelo2+"\n");
 		txtS.append("Precio \t: "+Variables.precio2+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo2+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho2+"\n");
-		txtS.append("Alto \t: "+Variables.alto2+"\n\n");
+		txtS.append("Marca \t: "+Variables.marca2+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro2+"\n");
+		txtS.append("Resistencia \t: "+Variables.resistencia2+"\n\n");
 		
 		txtS.append("Modelo \t: "+Variables.modelo3+"\n");
 		txtS.append("Precio \t: "+Variables.precio3+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo3+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho3+"\n");
-		txtS.append("Alto \t: "+Variables.alto3+"\n\n");
+		txtS.append("Marca \t: "+Variables.marca3+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro3+"\n");
+		txtS.append("Resistencia \t: "+Variables.resistencia3+"\n\n");
 		
 		txtS.append("Modelo \t: "+Variables.modelo4+"\n");
 		txtS.append("Precio \t: "+Variables.precio4+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo4+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho4+"\n");
-		txtS.append("Alto \t: "+Variables.alto4+"\n\n");
+		txtS.append("Marca \t: "+Variables.marca4+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro4+"\n");
+		txtS.append("Resistencia \t: "+Variables.resistencia4+"\n\n");
 	}
 }
