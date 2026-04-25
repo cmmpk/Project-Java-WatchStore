@@ -61,15 +61,15 @@ public class frmConsultar extends JDialog implements ActionListener {
 		lblNewLabel_1.setBounds(10, 56, 46, 14);
 		contentPanel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Ancho");
+		JLabel lblNewLabel_2 = new JLabel("Modelo");
 		lblNewLabel_2.setBounds(10, 87, 46, 14);
 		contentPanel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Alto");
-		lblNewLabel_3.setBounds(10, 118, 46, 14);
+		JLabel lblNewLabel_3 = new JLabel("Diametro");
+		lblNewLabel_3.setBounds(10, 118, 60, 14);
 		contentPanel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Fondo");
+		JLabel lblNewLabel_4 = new JLabel("Tipo");
 		lblNewLabel_4.setBounds(10, 153, 46, 14);
 		contentPanel.add(lblNewLabel_4);
 		
@@ -80,7 +80,7 @@ public class frmConsultar extends JDialog implements ActionListener {
 		
 		cboModelo = new JComboBox();
 		cboModelo.addActionListener(this);
-		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"LG LTCS20020W", "Samsung RB195ACRS", "Whirlpool WRT318FZDM", "Bosch B36BT930NS", "LG LSXS26366S"}));
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Casio", "Seiko", "Hamilton", "Orient", "Tissot"}));
 		cboModelo.setBounds(80, 20, 155, 22);
 		contentPanel.add(cboModelo);
 		
@@ -110,9 +110,9 @@ public class frmConsultar extends JDialog implements ActionListener {
 		
 		//variables inciales para el cboModelo
 		txtPrecio.setText(String.valueOf(Variables.precio0));
-		txtAncho.setText(String.valueOf(Variables.ancho0));
-		txtAlto.setText(String.valueOf(Variables.alto0));
-		txtFondo.setText(String.valueOf(Variables.fondo0));
+		txtAncho.setText(String.valueOf(Variables.modelo0));
+		txtAlto.setText(String.valueOf(Variables.diametro0));
+		txtFondo.setText(String.valueOf(Variables.tipo0));
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCerrar) {
@@ -129,33 +129,33 @@ public class frmConsultar extends JDialog implements ActionListener {
 		switch(pos) {
 			case 0://modelo 1 pos 0
 				txtPrecio.setText(String.valueOf(Variables.precio0));
-				txtAncho.setText(String.valueOf(Variables.ancho0));
-				txtAlto.setText(String.valueOf(Variables.alto0));
-				txtFondo.setText(String.valueOf(Variables.fondo0));
+				txtAncho.setText(String.valueOf(Variables.modelo0));
+				txtAlto.setText(String.valueOf(Variables.diametro0));
+				txtFondo.setText(String.valueOf(Variables.tipo0));
 				break;
 			case 1://modelo 2 pos 1
 				txtPrecio.setText(String.valueOf(Variables.precio1));
-				txtAncho.setText(String.valueOf(Variables.ancho1));
-				txtAlto.setText(String.valueOf(Variables.alto1));
-				txtFondo.setText(String.valueOf(Variables.fondo1));
+				txtAncho.setText(String.valueOf(Variables.modelo1));
+				txtAlto.setText(String.valueOf(Variables.diametro1));
+				txtFondo.setText(String.valueOf(Variables.tipo1));
 				break;
 			case 2://modelo 3 pos 2
 				txtPrecio.setText(String.valueOf(Variables.precio2));
-				txtAncho.setText(String.valueOf(Variables.ancho2));
-				txtAlto.setText(String.valueOf(Variables.alto2));
-				txtFondo.setText(String.valueOf(Variables.fondo2));
+				txtAncho.setText(String.valueOf(Variables.modelo2));
+				txtAlto.setText(String.valueOf(Variables.diametro2));
+				txtFondo.setText(String.valueOf(Variables.tipo2));
 				break;
 			case 3://modelo 4 pos 3
 				txtPrecio.setText(String.valueOf(Variables.precio3));
-				txtAncho.setText(String.valueOf(Variables.ancho3));
-				txtAlto.setText(String.valueOf(Variables.alto3));
-				txtFondo.setText(String.valueOf(Variables.fondo3));
+				txtAncho.setText(String.valueOf(Variables.modelo3));
+				txtAlto.setText(String.valueOf(Variables.diametro3));
+				txtFondo.setText(String.valueOf(Variables.tipo3));
 				break;
 			default://modelo 4 pos 3
 				txtPrecio.setText(String.valueOf(Variables.precio4));
-				txtAncho.setText(String.valueOf(Variables.ancho4));
-				txtAlto.setText(String.valueOf(Variables.alto4));
-				txtFondo.setText(String.valueOf(Variables.fondo4));
+				txtAncho.setText(String.valueOf(Variables.modelo4));
+				txtAlto.setText(String.valueOf(Variables.diametro4));
+				txtFondo.setText(String.valueOf(Variables.tipo4));
 				break;
 		
 		}
