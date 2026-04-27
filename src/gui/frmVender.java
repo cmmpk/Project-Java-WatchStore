@@ -21,13 +21,12 @@ import java.awt.event.ActionEvent;
 
 public class frmVender extends JDialog implements ActionListener {
 	//Variables globales
-	//double precio, ic,id,ip, descuento;
-
 	double cuota_diaria = 10000;
 	//Acumuladores
-	double aVentas;
+	double aIPVentas;
 	//Contadores
-	double cVentas;
+	//Variable para contar la cantidad de veces de una venta
+	int cVentas;
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtPrecio;
@@ -170,6 +169,7 @@ public class frmVender extends JDialog implements ActionListener {
 		id = getImporteDescuento(can, precio);
 		ip = ic-id;
 		obs = getObsequio(can);
+		efectuarIncrementos(ip);
 		//salida
 		mostrarResultados(can, precio, ic,id, ip, marca,obs);
 	}
@@ -259,6 +259,11 @@ public class frmVender extends JDialog implements ActionListener {
 		return sModelo;
 	}
 	
+	void efectuarIncrementos(double ip) {
+		cVentas++;
+		aIPVentas+=ip;
+	}
+	
 	void mostrarResultados(int can, double precio, double ic, double id, double ip, int marca, String obs) {
 		String sMarca = getMarca(marca);
 		String sModelo = getModelo(marca);
@@ -271,5 +276,7 @@ public class frmVender extends JDialog implements ActionListener {
 		txtS.append("Importe Descuento \t: "+"S/. "+id+"\n");
 		txtS.append("Importe a Pagar \t: "+"S/. "+ip+"\n");
 		txtS.append("Obsequio \t\t: "+obs+"\n\n");
+		txtS.append("Ventas Totales \t\t: "+cVentas+"\n\n");
+		txtS.append("Monto Total Vendido \t\t: "+aIPVentas+"\n\n");
 	}
 }
