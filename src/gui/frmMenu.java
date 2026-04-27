@@ -19,7 +19,7 @@ public class frmMenu extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JMenuItem mntmConsultar;
 	private JMenuItem mntmModificar;
-	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmVender;
 	private JMenuItem mntmConfigurarDescuentos;
 	private JMenuItem mntmConfigurarObsequios;
 	private JMenuItem mntmAcercaDeTienda;
@@ -79,8 +79,9 @@ public class frmMenu extends JFrame implements ActionListener {
 		JMenu mnNewMenu_2 = new JMenu("Venta");
 		menuBar.add(mnNewMenu_2);
 		
-		mntmNewMenuItem_1 = new JMenuItem("Vender");
-		mnNewMenu_2.add(mntmNewMenuItem_1);
+		mntmVender = new JMenuItem("Vender");
+		mntmVender.addActionListener(this);
+		mnNewMenu_2.add(mntmVender);
 		
 		JMenu mnNewMenu_3 = new JMenu("Configuracion");
 		menuBar.add(mnNewMenu_3);
@@ -106,6 +107,9 @@ public class frmMenu extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmVender) {
+			actionPerformedMntmVender(e);
+		}
 		if (e.getSource() == mntmSalir) {
 			actionPerformedMntmSalir(e);
 		}
@@ -155,5 +159,9 @@ public class frmMenu extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedMntmSalir(ActionEvent e) {
 		System.exit(0);
+	}
+	protected void actionPerformedMntmVender(ActionEvent e) {
+		frmVender frm= new frmVender();
+		frm.setVisible(true);
 	}
 }

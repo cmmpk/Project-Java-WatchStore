@@ -7,23 +7,35 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.Variables;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class frmVender extends JDialog {
+public class frmVender extends JDialog implements ActionListener {
+	//Variables globales
+	//double precio, ic,id,ip, descuento;
 
+	double cuota_diaria = 10000;
+	//Acumuladores
+	double aVentas;
+	//Contadores
+	double cVentas;
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtPrecio;
 	private JTextField txtCantidad;
-	private JComboBox comboBox;
 	private JButton btnVender;
 	private JButton btnCerrar;
 	private JTextArea txtS;
+	private JComboBox cboMarca;
 
 	/**
 	 * Launch the application.
@@ -55,20 +67,14 @@ public class frmVender extends JDialog {
 			contentPanel.add(lblNewLabel);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Precio");
-			lblNewLabel_1.setBounds(10, 56, 46, 14);
+			JLabel lblNewLabel_1 = new JLabel("Precio (S/)");
+			lblNewLabel_1.setBounds(10, 56, 65, 14);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{
 			JLabel lblNewLabel_2 = new JLabel("Cantidad");
-			lblNewLabel_2.setBounds(10, 87, 46, 14);
+			lblNewLabel_2.setBounds(10, 87, 65, 14);
 			contentPanel.add(lblNewLabel_2);
-		}
-		{
-			comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Casio", "Seiko", "Hamilton", "Orient", "Tissot"}));
-			comboBox.setBounds(85, 20, 141, 22);
-			contentPanel.add(comboBox);
 		}
 		{
 			txtPrecio = new JTextField();
@@ -85,20 +91,185 @@ public class frmVender extends JDialog {
 		}
 		{
 			btnVender = new JButton("Vender");
+			btnVender.addActionListener(this);
 			btnVender.setBounds(425, 20, 89, 23);
 			contentPanel.add(btnVender);
 		}
 		{
 			btnCerrar = new JButton("Cerrrar");
+			btnCerrar.addActionListener(this);
 			btnCerrar.setBounds(425, 52, 89, 23);
 			contentPanel.add(btnCerrar);
 		}
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 124, 503, 312);
 		contentPanel.add(scrollPane);
-		
+
 		txtS = new JTextArea();
 		scrollPane.setViewportView(txtS);
+
+		cboMarca = new JComboBox();
+		cboMarca.addActionListener(this);
+		cboMarca.setModel(new DefaultComboBoxModel(new String[] { "Casio", "Seiko", "Hamilton", "Orient", "Tissot" }));
+		cboMarca.setBounds(85, 20, 141, 22);
+		contentPanel.add(cboMarca);
+		
+		//Inicializaciones
+		txtPrecio.setText(String.valueOf(Variables.precio0));
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnVender) {
+			actionPerformedBtnVender(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+		if (e.getSource() == cboMarca) {
+			actionPerformedCboMarca(e);
+		}
+	}
+
+	protected void actionPerformedCboMarca(ActionEvent e) {
+		// Proceso
+		int pos;
+		pos = cboMarca.getSelectedIndex();
+		switch (pos) {
+			case 0:
+				txtPrecio.setText(String.valueOf(Variables.precio0));
+				break;
+			case 1:
+				txtPrecio.setText(String.valueOf(Variables.precio1));
+				break;
+			case 2:
+				txtPrecio.setText(String.valueOf(Variables.precio2));
+				break;
+			case 3:
+				txtPrecio.setText(String.valueOf(Variables.precio3));
+				break;
+			default:
+				txtPrecio.setText(String.valueOf(Variables.precio4));
+				break;
+		}
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+	
+	protected void actionPerformedBtnVender(ActionEvent e) {
+		int marca, can;
+		double precio,ic,id,ip;
+		String obs;
+		//entradas
+		marca = getMarca();
+		can = getCantidad();
+		precio = getPrecio();
+		//procesos
+		ic = getImporteCompra(can, precio);
+		id = getImporteDescuento(can, precio);
+		ip = ic-id;
+		obs = getObsequio(can);
+		//salida
+		mostrarResultados(can, precio, ic,id, ip, marca,obs);
+	}
+	
+	//Metodos
+	int getMarca() {
+		return cboMarca.getSelectedIndex();
+	}
+	int getCantidad() {
+		return Integer.parseInt(txtCantidad.getText());
+	}
+	double getPrecio() {
+		return Double.parseDouble(txtPrecio.getText());
+	}
+
+	double getImporteCompra(int can, double precio){
+		double ip;
+		ip = can*precio;
+		return ip;
+	}
+	
+	double getImporteDescuento(int can, double ic){
+		double id;
+		if(can>=1 && can <=5) 
+			id = ic * (Variables.porcentaje1 * 0.01);
+		else if(can>=6 && can <=10)
+			id = ic * (Variables.porcentaje2* 0.01);
+		else if(can>=11 && can<=15) 
+			id = ic * (Variables.porcentaje3* 0.01);
+		else 
+			id = ic * (Variables.porcentaje4* 0.01);
+
+		return id;
+	}
+	String getObsequio(int can) {
+		String obs;
+		if(can >= 1 && can <2)
+			obs = Variables.obsequio1;
+		else if(can>= 2 && can <=5) 
+			obs = Variables.obsequio2;
+		else
+			obs = Variables.obsequio3;
+		return obs;
+	}
+	
+	String getMarca(int marca) {
+		String sMarca;
+		switch (marca) {
+			case 0:
+				sMarca = Variables.marca0;
+				break;
+			case 1:
+				sMarca = Variables.marca1;
+				break;
+			case 2:
+				sMarca = Variables.marca2;
+				break;
+			case 3:
+				sMarca = Variables.marca3;
+				break;
+			default:
+				sMarca = Variables.marca4;
+				break;
+		}
+		return sMarca;
+	}
+	
+	String getModelo(int marca) {
+		String sModelo;
+		switch (marca) {
+			case 0:
+				sModelo = Variables.modelo0;
+				break;
+			case 1:
+				sModelo = Variables.modelo1;
+				break;
+			case 2:
+				sModelo = Variables.modelo2;
+				break;
+			case 3:
+				sModelo = Variables.modelo3;
+				break;
+			default:
+				sModelo = Variables.modelo4;
+				break;
+		}
+		return sModelo;
+	}
+	
+	void mostrarResultados(int can, double precio, double ic, double id, double ip, int marca, String obs) {
+		String sMarca = getMarca(marca);
+		String sModelo = getModelo(marca);
+		txtS.setText("BOLETA DE VENTA\n\n");
+		txtS.append("Marca \t\t: "+sMarca+"\n");
+		txtS.append("Modelo \t\t: "+sModelo+"\n");
+		txtS.append("Precio \t\t: "+"S/. "+precio+"\n");
+		txtS.append("Cantidad \t\t: "+can+"\n");
+		txtS.append("Importe Compra \t: "+"S/. "+ic+"\n");
+		txtS.append("Importe Descuento \t: "+"S/. "+id+"\n");
+		txtS.append("Importe a Pagar \t: "+"S/. "+ip+"\n");
+		txtS.append("Obsequio \t\t: "+obs+"\n\n");
 	}
 }
