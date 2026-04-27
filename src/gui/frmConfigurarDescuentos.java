@@ -47,6 +47,7 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public frmConfigurarDescuentos() {
+		setModal(true);
 		setTitle("Configuración de descuentos");
 		setBounds(100, 100, 494, 202);
 		getContentPane().setLayout(new BorderLayout());

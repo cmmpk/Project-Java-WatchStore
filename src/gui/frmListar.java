@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -77,10 +76,15 @@ public class frmListar extends JDialog implements ActionListener {
 		dispose();
 	}
 	protected void actionPerformedBtnListar(ActionEvent e) {
+		mostrarResultados();
+	}
+	
+	//Metodos
+	void mostrarResultados() {
 		txtS.setText("LISTADO DE RELOJES\n\n");
 		txtS.append("Marca \t: "+Variables.marca0+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo0+"\n");
-		txtS.append("Tipo \t: "+getTipoReloj(Variables.tipo0)+"\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo0)+"\n");
 		txtS.append("Precio \t: "+"S/. "+Variables.precio0+"\n");
 		txtS.append("Diametro \t: "+Variables.diametro0+" mm"+"\n");
 		txtS.append("Grosor \t: "+Variables.grosor0+" mm"+"\n");
@@ -88,7 +92,7 @@ public class frmListar extends JDialog implements ActionListener {
 		
 		txtS.append("Marca \t: "+Variables.marca1+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo1+"\n");
-		txtS.append("Tipo \t: "+getTipoReloj(Variables.tipo1)+"\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo1)+"\n");
 		txtS.append("Precio \t: "+"S/. "+Variables.precio1+"\n");
 		txtS.append("Diametro\t: "+Variables.diametro1+" mm"+"\n");
 		txtS.append("Grosor \t: "+Variables.grosor1+" mm"+"\n");
@@ -96,7 +100,7 @@ public class frmListar extends JDialog implements ActionListener {
 		
 		txtS.append("Marca \t: "+Variables.marca2+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo2+"\n");
-		txtS.append("Tipo \t: "+getTipoReloj(Variables.tipo2)+"\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo2)+"\n");
 		txtS.append("Precio \t: "+"S/. "+Variables.precio2+"\n");
 		txtS.append("Diametro \t: "+Variables.diametro2+" mm"+"\n");
 		txtS.append("Grosor \t: "+Variables.grosor2+" mm"+"\n");
@@ -104,7 +108,7 @@ public class frmListar extends JDialog implements ActionListener {
 		
 		txtS.append("Marca \t: "+Variables.marca3+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo3+"\n");
-		txtS.append("Tipo \t: "+getTipoReloj(Variables.tipo3)+"\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo3)+"\n");
 		txtS.append("Precio \t: "+"S/. "+Variables.precio3+"\n");
 		txtS.append("Diametro \t: "+Variables.diametro3+" mm"+"\n");
 		txtS.append("Grosor \t: "+Variables.grosor3+" mm"+"\n");
@@ -112,14 +116,14 @@ public class frmListar extends JDialog implements ActionListener {
 		
 		txtS.append("Marca \t: "+Variables.marca4+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo4+"\n");
-		txtS.append("Tipo \t: "+getTipoReloj(Variables.tipo4)+"\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo4)+"\n");
 		txtS.append("Precio \t: "+"S/. "+Variables.precio4+"\n");
 		txtS.append("Diametro \t: "+Variables.diametro4+" mm"+"\n");
 		txtS.append("Grosor \t: "+Variables.grosor4+" mm"+"\n");
-		txtS.append("Res. al Agua \t: "+Variables.resistencia4+" m"+"\n\n");
+		txtS.append("Res. al Agua \t: "+Variables.resistencia4+" m"+"\n\n");	
 	}
 	
-	String getTipoReloj(int tipo) {
+	String obtenerTipoReloj(int tipo) {
 		String tipo_final;
 		switch (tipo) {
 		case 0:

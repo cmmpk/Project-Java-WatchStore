@@ -42,6 +42,7 @@ public class frmConfigurarObsequios extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public frmConfigurarObsequios() {
+		setModal(true);
 		setTitle("Configurar Obsequios");
 		setBounds(100, 100, 488, 186);
 		getContentPane().setLayout(new BorderLayout());

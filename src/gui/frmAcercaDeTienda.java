@@ -36,6 +36,7 @@ public class frmAcercaDeTienda extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public frmAcercaDeTienda() {
+		setModal(true);
 		setTitle("Acera de Tienda");
 		setBounds(100, 100, 452, 348);
 		getContentPane().setLayout(new BorderLayout());
