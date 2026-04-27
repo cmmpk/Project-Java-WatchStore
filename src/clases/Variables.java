@@ -56,5 +56,8 @@ public class Variables {
 	public static String obsequio1 = "Lentes Rayband v12";
 	public static String obsequio2 = "Pulsera cuero marron Hugo Boss";
 	public static String obsequio3 = "Blazer Suit Tommy Hilfiger";
+	
+	//Cuota Diaria
+	public static double cuotaDiaria = 10000;
 
 }

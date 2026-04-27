@@ -21,7 +21,6 @@ import java.awt.event.ActionEvent;
 
 public class frmVender extends JDialog implements ActionListener {
 	//Variables globales
-	double cuota_diaria = 10000;
 	//Acumuladores
 	double aIPVentas;
 	//Contadores
@@ -172,6 +171,7 @@ public class frmVender extends JDialog implements ActionListener {
 		efectuarIncrementos(ip);
 		//salida
 		mostrarResultados(can, precio, ic,id, ip, marca,obs);
+		mostrarResumen();
 	}
 	
 	//Metodos
@@ -278,5 +278,13 @@ public class frmVender extends JDialog implements ActionListener {
 		txtS.append("Obsequio \t\t: "+obs+"\n\n");
 		txtS.append("Ventas Totales \t\t: "+cVentas+"\n\n");
 		txtS.append("Monto Total Vendido \t\t: "+aIPVentas+"\n\n");
+	}
+	
+	void mostrarResumen() {
+		if(cVentas % 5 == 0) {
+			frmAvance frm= new frmAvance(cVentas, aIPVentas);
+			frm.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			frm.setVisible(true);
+		}
 	}
 }
