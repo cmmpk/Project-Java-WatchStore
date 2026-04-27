@@ -153,5 +153,6 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 		dispose();
 	}
 	protected void actionPerformedBtnCancelar(ActionEvent e) {
+		dispose();
 	}
 }
