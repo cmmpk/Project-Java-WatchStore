@@ -63,15 +63,15 @@ public class frmMenu extends JFrame implements ActionListener {
 		JMenu mnNewMenu_1 = new JMenu("Mantenimiento");
 		menuBar.add(mnNewMenu_1);
 		
-		mntmConsultar = new JMenuItem("Consultar");
+		mntmConsultar = new JMenuItem("Consultar Relojes");
 		mntmConsultar.addActionListener(this);
 		mnNewMenu_1.add(mntmConsultar);
 		
-		mntmModificar = new JMenuItem("Modificar");
+		mntmModificar = new JMenuItem("Modificar Relojes");
 		mntmModificar.addActionListener(this);
 		mnNewMenu_1.add(mntmModificar);
 		
-		mntmListar = new JMenuItem("Listar");
+		mntmListar = new JMenuItem("Listar Relojes");
 		mntmListar.addActionListener(this);
 		mnNewMenu_1.add(mntmListar);
 		
