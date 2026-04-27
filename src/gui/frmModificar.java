@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -8,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import clases.Validaciones;
 import clases.Variables;
 
 import javax.swing.JLabel;
@@ -32,6 +34,11 @@ public class frmModificar extends JDialog implements ActionListener {
 	private JLabel lblNewLabel_6;
 	private JTextField txtGrosor;
 	private JComboBox cboTipo;
+	private JLabel lblErrorPrecio;
+	private JLabel lblErrorDiametro;
+	private JLabel lblErrorGrosor;
+	private JLabel lblErrorResistencia;
+	private JLabel lblErrorModelo;
 
 	/**
 	 * Launch the application.
@@ -52,7 +59,7 @@ public class frmModificar extends JDialog implements ActionListener {
 	public frmModificar() {
 		setModal(true);
 		setTitle("Modificar");
-		setBounds(100, 100, 454, 282);
+		setBounds(100, 100, 526, 285);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -116,13 +123,13 @@ public class frmModificar extends JDialog implements ActionListener {
 		{
 			btnCerrar = new JButton("Cerrar");
 			btnCerrar.addActionListener(this);
-			btnCerrar.setBounds(335, 21, 89, 23);
+			btnCerrar.setBounds(411, 21, 89, 23);
 			contentPanel.add(btnCerrar);
 		}
 		{
 			btnGuardar = new JButton("Guardar");
 			btnGuardar.addActionListener(this);
-			btnGuardar.setBounds(335, 50, 89, 23);
+			btnGuardar.setBounds(411, 53, 89, 23);
 			contentPanel.add(btnGuardar);
 		}
 
@@ -155,6 +162,35 @@ public class frmModificar extends JDialog implements ActionListener {
 		txtDiametro.setText(String.valueOf(Variables.diametro0));
 		txtGrosor.setText(String.valueOf(Variables.grosor0));
 		txtResistencia.setText(String.valueOf(Variables.resistencia0));
+		{
+			lblErrorPrecio = new JLabel("");
+			lblErrorPrecio.setVisible(false);
+			lblErrorPrecio.setBounds(284, 119, 216, 14);
+			contentPanel.add(lblErrorPrecio);
+		}
+		{
+			lblErrorDiametro = new JLabel("");
+			lblErrorDiametro.setVisible(false);
+			lblErrorDiametro.setBounds(284, 150, 216, 14);
+			contentPanel.add(lblErrorDiametro);
+		}
+		{
+			lblErrorGrosor = new JLabel("");
+			lblErrorGrosor.setVisible(false);
+			lblErrorGrosor.setBounds(284, 181, 216, 14);
+			contentPanel.add(lblErrorGrosor);
+		}
+		{
+			lblErrorResistencia = new JLabel("");
+			lblErrorResistencia.setVisible(false);
+			lblErrorResistencia.setBounds(284, 212, 216, 14);
+			contentPanel.add(lblErrorResistencia);
+		}
+		{
+			lblErrorModelo = new JLabel("");
+			lblErrorModelo.setBounds(284, 57, 117, 14);
+			contentPanel.add(lblErrorModelo);
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -168,7 +204,7 @@ public class frmModificar extends JDialog implements ActionListener {
 			actionPerformedCboModelo(e);
 		}
 	}
-	protected void actionPerformedCboModelo(ActionEvent e) {
+	protected void actionPerformedCboModelo(ActionEvent e) {		
 		//variables
 		int pos;
 		pos = cboMarca.getSelectedIndex();
@@ -217,7 +253,17 @@ public class frmModificar extends JDialog implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnGuardar(ActionEvent e) {
-		//obtener posicion del elemento seleccionado
+		
+	    // Validación
+	    boolean precioOk	= Validaciones.validarCampoDecimal(txtPrecio,lblErrorPrecio);
+		boolean diametroOk	= Validaciones.validarCampoDecimal(txtDiametro, lblErrorDiametro);
+		boolean grosorOk	= Validaciones.validarCampoDecimal(txtGrosor, lblErrorGrosor);
+		boolean resistenciaOk = Validaciones.validarCampoEntero(txtResistencia, lblErrorResistencia);
+		boolean modeloOk	= Validaciones.validarCampoTexto(txtModelo, lblErrorModelo, 50);
+	    if (!precioOk|!diametroOk|!grosorOk|!resistenciaOk|!modeloOk ) {
+	        return;
+	    }
+		
 		int marca;
 		marca = cboMarca.getSelectedIndex();
 		switch (marca) {
