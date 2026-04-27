@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import clases.Validaciones;
 import clases.Variables;
 
 import javax.swing.JLabel;
@@ -29,6 +30,10 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 	private JLabel lblNewLabel_5;
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
+	private JLabel lblErrorPorcentaje1;
+	private JLabel lblErrorPorcentaje2;
+	private JLabel lblErrorPorcentaje3;
+	private JLabel lblErrorPorcentaje4;
 
 	/**
 	 * Launch the application.
@@ -49,7 +54,7 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 	public frmConfigurarDescuentos() {
 		setModal(true);
 		setTitle("Configuración de descuentos");
-		setBounds(100, 100, 494, 202);
+		setBounds(100, 100, 494, 264);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -67,24 +72,24 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 		}
 		{
 			txtPorcentaje2 = new JTextField();
-			txtPorcentaje2.setBounds(131, 64, 161, 20);
+			txtPorcentaje2.setBounds(131, 76, 161, 20);
 			contentPanel.add(txtPorcentaje2);
 			txtPorcentaje2.setColumns(10);
 		}
 		{
 			txtPorcentaje3 = new JTextField();
-			txtPorcentaje3.setBounds(131, 95, 161, 20);
+			txtPorcentaje3.setBounds(131, 118, 161, 20);
 			contentPanel.add(txtPorcentaje3);
 			txtPorcentaje3.setColumns(10);
 		}
 		{
 			JLabel lblNewLabel_1 = new JLabel("6 a 10 unidades");
-			lblNewLabel_1.setBounds(10, 67, 111, 14);
+			lblNewLabel_1.setBounds(10, 79, 111, 14);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{
 			JLabel lblNewLabel_2 = new JLabel("11 a 15 unidades");
-			lblNewLabel_2.setBounds(10, 98, 111, 14);
+			lblNewLabel_2.setBounds(10, 121, 111, 14);
 			contentPanel.add(lblNewLabel_2);
 		}
 		{
@@ -101,13 +106,13 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 		}
 		{
 			txtPorcentaje4 = new JTextField();
-			txtPorcentaje4.setBounds(131, 126, 161, 20);
+			txtPorcentaje4.setBounds(131, 159, 161, 20);
 			contentPanel.add(txtPorcentaje4);
 			txtPorcentaje4.setColumns(10);
 		}
 		{
 			JLabel lblNewLabel_3 = new JLabel("Más de 15 unidades");
-			lblNewLabel_3.setBounds(10, 129, 111, 14);
+			lblNewLabel_3.setBounds(10, 162, 121, 14);
 			contentPanel.add(lblNewLabel_3);
 		}
 		//Inicializacion
@@ -122,18 +127,42 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 		}
 		{
 			lblNewLabel_5 = new JLabel("%");
-			lblNewLabel_5.setBounds(302, 67, 46, 14);
+			lblNewLabel_5.setBounds(302, 79, 46, 14);
 			contentPanel.add(lblNewLabel_5);
 		}
 		{
 			lblNewLabel_6 = new JLabel("%");
-			lblNewLabel_6.setBounds(302, 98, 46, 14);
+			lblNewLabel_6.setBounds(302, 121, 46, 14);
 			contentPanel.add(lblNewLabel_6);
 		}
 		{
 			lblNewLabel_7 = new JLabel("%");
-			lblNewLabel_7.setBounds(302, 129, 46, 14);
+			lblNewLabel_7.setBounds(302, 162, 46, 14);
 			contentPanel.add(lblNewLabel_7);
+		}
+		{
+			lblErrorPorcentaje1 = new JLabel("");
+			lblErrorPorcentaje1.setVisible(false);
+			lblErrorPorcentaje1.setBounds(131, 54, 217, 14);
+			contentPanel.add(lblErrorPorcentaje1);
+		}
+		{
+			lblErrorPorcentaje2 = new JLabel("");
+			lblErrorPorcentaje2.setVisible(false);
+			lblErrorPorcentaje2.setBounds(131, 97, 217, 14);
+			contentPanel.add(lblErrorPorcentaje2);
+		}
+		{
+			lblErrorPorcentaje3 = new JLabel("");
+			lblErrorPorcentaje3.setVisible(false);
+			lblErrorPorcentaje3.setBounds(131, 139, 217, 14);
+			contentPanel.add(lblErrorPorcentaje3);
+		}
+		{
+			lblErrorPorcentaje4 = new JLabel("");
+			lblErrorPorcentaje4.setVisible(false);
+			lblErrorPorcentaje4.setBounds(131, 180, 217, 14);
+			contentPanel.add(lblErrorPorcentaje4);
 		}
 	}
 
@@ -146,6 +175,15 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnAceptar(ActionEvent e) {
+	    // Validación
+	    boolean porce1Ok	= Validaciones.validarCampoDecimal(txtPorcentaje1, lblErrorPorcentaje1);
+		boolean porce2Ok	= Validaciones.validarCampoDecimal(txtPorcentaje2, lblErrorPorcentaje2);
+		boolean porce3Ok	= Validaciones.validarCampoDecimal(txtPorcentaje3, lblErrorPorcentaje3);
+		boolean porce4Ok 	= Validaciones.validarCampoDecimal(txtPorcentaje4, lblErrorPorcentaje4);
+	    if (!porce1Ok|!porce2Ok|!porce3Ok|!porce4Ok ) {
+	        return;
+	    }
+	    
 		Variables.porcentaje1 = Double.parseDouble(txtPorcentaje1.getText());
 		Variables.porcentaje2 = Double.parseDouble(txtPorcentaje2.getText());
 		Variables.porcentaje3 = Double.parseDouble(txtPorcentaje3.getText());

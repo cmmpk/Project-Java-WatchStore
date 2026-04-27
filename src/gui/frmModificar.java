@@ -155,13 +155,6 @@ public class frmModificar extends JDialog implements ActionListener {
 		cboTipo.setBounds(115, 85, 159, 22);
 		contentPanel.add(cboTipo);
 		
-		//Variables iniciales
-		txtModelo.setText(String.valueOf(Variables.modelo0));
-		cboTipo.setSelectedIndex(Variables.tipo0); //0 o 1
-		txtPrecio.setText(String.valueOf(Variables.precio0));
-		txtDiametro.setText(String.valueOf(Variables.diametro0));
-		txtGrosor.setText(String.valueOf(Variables.grosor0));
-		txtResistencia.setText(String.valueOf(Variables.resistencia0));
 		{
 			lblErrorPrecio = new JLabel("");
 			lblErrorPrecio.setVisible(false);
@@ -191,6 +184,14 @@ public class frmModificar extends JDialog implements ActionListener {
 			lblErrorModelo.setBounds(284, 57, 117, 14);
 			contentPanel.add(lblErrorModelo);
 		}
+		
+		//Variables iniciales
+		txtModelo.setText(String.valueOf(Variables.modelo0));
+		cboTipo.setSelectedIndex(Variables.tipo0); //0 o 1
+		txtPrecio.setText(String.valueOf(Variables.precio0));
+		txtDiametro.setText(String.valueOf(Variables.diametro0));
+		txtGrosor.setText(String.valueOf(Variables.grosor0));
+		txtResistencia.setText(String.valueOf(Variables.resistencia0));
 	}
 
 	public void actionPerformed(ActionEvent e) {
