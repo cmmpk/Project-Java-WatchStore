@@ -58,7 +58,7 @@ public class frmModificar extends JDialog implements ActionListener {
 	 */
 	public frmModificar() {
 		setModal(true);
-		setTitle("Modificar");
+		setTitle("Modificar Reloj");
 		setBounds(100, 100, 526, 285);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -21,7 +21,6 @@ public class Validaciones {
 
 	        Double.parseDouble(textoSinEspacios);
 
-	        // 4. Espacios internos (ya sabemos que es número, pero mal escrito)
 	        if (texto.contains(" ")) {
 	            throw new Exception("Ingrese un número válido");
 	        }
@@ -95,7 +94,7 @@ public class Validaciones {
 	        }
 
 	        if (textoSinEspacios.isEmpty()) {
-	            throw new Exception("Ingrese el modelo");
+	            throw new Exception("Ingrese un texto");
 	        }
 
 	        if (textoSinEspacios.length() > maxCaracteres) {

@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import clases.Validaciones;
 import clases.Variables;
 
 import javax.swing.JLabel;
@@ -34,6 +35,7 @@ public class frmVender extends JDialog implements ActionListener {
 	private JButton btnCerrar;
 	private JTextArea txtS;
 	private JComboBox cboMarca;
+	private JLabel lblErrorCantidad;
 
 	/**
 	 * Launch the application.
@@ -115,6 +117,12 @@ public class frmVender extends JDialog implements ActionListener {
 		
 		//Inicializaciones
 		txtPrecio.setText(String.valueOf(Variables.precio0));
+		{
+			lblErrorCantidad = new JLabel("");
+			lblErrorCantidad.setVisible(false);
+			lblErrorCantidad.setBounds(236, 87, 187, 14);
+			contentPanel.add(lblErrorCantidad);
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -130,7 +138,6 @@ public class frmVender extends JDialog implements ActionListener {
 	}
 
 	protected void actionPerformedCboMarca(ActionEvent e) {
-		// Proceso
 		int pos;
 		pos = cboMarca.getSelectedIndex();
 		switch (pos) {
@@ -150,12 +157,20 @@ public class frmVender extends JDialog implements ActionListener {
 				txtPrecio.setText(String.valueOf(Variables.precio4));
 				break;
 		}
+		txtCantidad.setText("");
+		txtCantidad.requestFocus();
 	}
 	protected void actionPerformedBtnCerrar(ActionEvent e) {
 		dispose();
 	}
 	
 	protected void actionPerformedBtnVender(ActionEvent e) {
+		// Validación
+	    boolean cantidadOk	= Validaciones.validarCampoDecimal(txtCantidad,lblErrorCantidad);
+	    if (!cantidadOk ) {
+	        return;
+	    }
+	    
 		int marca, can;
 		double precio,ic,id,ip;
 		String obs;
@@ -174,7 +189,7 @@ public class frmVender extends JDialog implements ActionListener {
 		mostrarResumen();
 	}
 	
-	//Metodos
+	//Metodos con retorno
 	int getMarca() {
 		return cboMarca.getSelectedIndex();
 	}
@@ -259,6 +274,7 @@ public class frmVender extends JDialog implements ActionListener {
 		return sModelo;
 	}
 	
+	//Metodos sin retorno
 	void efectuarIncrementos(double ip) {
 		cVentas++;
 		aIPVentas+=ip;
@@ -276,8 +292,6 @@ public class frmVender extends JDialog implements ActionListener {
 		txtS.append("Importe Descuento \t: "+"S/. "+id+"\n");
 		txtS.append("Importe a Pagar \t: "+"S/. "+ip+"\n");
 		txtS.append("Obsequio \t\t: "+obs+"\n\n");
-		txtS.append("Ventas Totales \t\t: "+cVentas+"\n\n");
-		txtS.append("Monto Total Vendido \t\t: "+aIPVentas+"\n\n");
 	}
 	
 	void mostrarResumen() {

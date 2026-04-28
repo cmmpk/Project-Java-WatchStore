@@ -40,7 +40,7 @@ public class frmListar extends JDialog implements ActionListener {
 	 */
 	public frmListar() {
 		setModal(true);
-		setTitle("Listado de Productos");
+		setTitle("Listado de Relojes");
 		setBounds(100, 100, 475, 503);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -53,8 +53,8 @@ public class frmAvance extends JDialog implements ActionListener {
 		btnAceptar.setBounds(140, 95, 89, 23);
 		getContentPane().add(btnAceptar);
 		
-		JLabel lblNewLabel_1 = new JLabel("Importe total generado : S/.");
-		lblNewLabel_1.setBounds(74, 40, 155, 14);
+		JLabel lblNewLabel_1 = new JLabel("Importe total generado :");
+		lblNewLabel_1.setBounds(74, 40, 140, 14);
 		getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Porcentaje de la cuota diaria :");
@@ -68,11 +68,11 @@ public class frmAvance extends JDialog implements ActionListener {
 		lblIconoInformacion.setIcon(UIManager.getIcon("OptionPane.informationIcon"));
 		
 		lblImporteTotal = new JLabel("");
-		lblImporteTotal.setBounds(235, 40, 134, 14);
+		lblImporteTotal.setBounds(214, 40, 155, 14);
 		getContentPane().add(lblImporteTotal);
 		
 		lblPorcentajeCuota = new JLabel("");
-		lblPorcentajeCuota.setBounds(242, 57, 127, 14);
+		lblPorcentajeCuota.setBounds(246, 57, 123, 14);
 		getContentPane().add(lblPorcentajeCuota);
 		
 		lblBase = new JLabel("Venta Nro. ");
@@ -83,8 +83,9 @@ public class frmAvance extends JDialog implements ActionListener {
 		lblVentas.setBounds(136, 26, 46, 14);
 		getContentPane().add(lblVentas);
 		
+		//Inicializaciones
 		lblVentas.setText(String.valueOf(cVentas));
-		lblImporteTotal.setText(String.format("%.2f%%", aIPVentas)); //con formateo a 2 decimales
+		lblImporteTotal.setText(String.format("S/. %.2f", aIPVentas));
 		lblPorcentajeCuota.setText(String.format("%.2f%%", getPorcentaje(aIPVentas))); //con formateo a 2 decimales
 	}
 

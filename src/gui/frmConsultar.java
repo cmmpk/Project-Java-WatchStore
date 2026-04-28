@@ -23,12 +23,12 @@ public class frmConsultar extends JDialog implements ActionListener {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtModelo;
 	private JTextField txtDiametro;
-	private JTextField txtTipo;
 	private JComboBox cboMarca;
 	private JTextField txtPrecio;
 	private JButton btnCerrar;
 	private JTextField txtGrosor;
 	private JTextField txtResistencia;
+	private JComboBox cboTipo;
 
 	/**
 	 * Launch the application.
@@ -104,12 +104,6 @@ public class frmConsultar extends JDialog implements ActionListener {
 		contentPanel.add(txtDiametro);
 		txtDiametro.setColumns(10);
 		
-		txtTipo = new JTextField();
-		txtTipo.setEditable(false);
-		txtTipo.setBounds(115, 83, 155, 20);
-		contentPanel.add(txtTipo);
-		txtTipo.setColumns(10);
-		
 		JLabel lblNewLabel_5 = new JLabel("Grosor (mm)");
 		lblNewLabel_5.setBounds(10, 179, 82, 14);
 		contentPanel.add(lblNewLabel_5);
@@ -130,9 +124,14 @@ public class frmConsultar extends JDialog implements ActionListener {
 		contentPanel.add(txtResistencia);
 		txtResistencia.setColumns(10);
 		
+		cboTipo = new JComboBox();
+		cboTipo.setModel(new DefaultComboBoxModel(new String[] {"Analógico", "Digital"}));
+		cboTipo.setBounds(115, 82, 155, 22);
+		contentPanel.add(cboTipo);
+		
 		//variables inciales
 		txtModelo.setText(String.valueOf(Variables.modelo0));
-		txtTipo.setText(String.valueOf(Variables.tipo0));
+		cboTipo.setSelectedIndex(Variables.tipo0);
 		txtPrecio.setText(String.valueOf(Variables.precio0));
 		txtDiametro.setText(String.valueOf(Variables.diametro0));
 		txtGrosor.setText(String.valueOf(Variables.grosor0));
@@ -153,7 +152,7 @@ public class frmConsultar extends JDialog implements ActionListener {
 		switch(pos) {
 			case 0://marca 1 pos 0
 				txtModelo.setText(String.valueOf(Variables.modelo0));
-				txtTipo.setText(String.valueOf(Variables.tipo0));
+				cboTipo.setSelectedIndex(Variables.tipo0);
 				txtPrecio.setText(String.valueOf(Variables.precio0));
 				txtDiametro.setText(String.valueOf(Variables.diametro0));
 				txtGrosor.setText(String.valueOf(Variables.grosor0));
@@ -161,7 +160,7 @@ public class frmConsultar extends JDialog implements ActionListener {
 				break;
 			case 1://marca 2 pos 1
 				txtModelo.setText(String.valueOf(Variables.modelo1));
-				txtTipo.setText(String.valueOf(Variables.tipo1));
+				cboTipo.setSelectedIndex(Variables.tipo1);
 				txtPrecio.setText(String.valueOf(Variables.precio1));
 				txtDiametro.setText(String.valueOf(Variables.diametro1));
 				txtGrosor.setText(String.valueOf(Variables.grosor1));
@@ -169,7 +168,7 @@ public class frmConsultar extends JDialog implements ActionListener {
 				break;
 			case 2://marca 3 pos 2
 				txtModelo.setText(String.valueOf(Variables.modelo2));
-				txtTipo.setText(String.valueOf(Variables.tipo2));
+				cboTipo.setSelectedIndex(Variables.tipo2);
 				txtPrecio.setText(String.valueOf(Variables.precio2));
 				txtDiametro.setText(String.valueOf(Variables.diametro2));
 				txtGrosor.setText(String.valueOf(Variables.grosor2));
@@ -177,7 +176,7 @@ public class frmConsultar extends JDialog implements ActionListener {
 				break;
 			case 3://marca 4 pos 3
 				txtModelo.setText(String.valueOf(Variables.modelo3));
-				txtTipo.setText(String.valueOf(Variables.tipo3));
+				cboTipo.setSelectedIndex(Variables.tipo3);
 				txtPrecio.setText(String.valueOf(Variables.precio3));
 				txtDiametro.setText(String.valueOf(Variables.diametro3));
 				txtGrosor.setText(String.valueOf(Variables.grosor3));
@@ -185,7 +184,7 @@ public class frmConsultar extends JDialog implements ActionListener {
 				break;
 			default://marca 4 pos 3
 				txtModelo.setText(String.valueOf(Variables.modelo4));
-				txtTipo.setText(String.valueOf(Variables.tipo4));
+				cboTipo.setSelectedIndex(Variables.tipo4);
 				txtPrecio.setText(String.valueOf(Variables.precio4));
 				txtDiametro.setText(String.valueOf(Variables.diametro4));
 				txtGrosor.setText(String.valueOf(Variables.grosor4));

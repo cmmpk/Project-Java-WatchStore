@@ -115,11 +115,7 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 			lblNewLabel_3.setBounds(10, 162, 121, 14);
 			contentPanel.add(lblNewLabel_3);
 		}
-		//Inicializacion
-		txtPorcentaje1.setText(String.valueOf(Variables.porcentaje1));
-		txtPorcentaje2.setText(String.valueOf(Variables.porcentaje2));
-		txtPorcentaje3.setText(String.valueOf(Variables.porcentaje3));
-		txtPorcentaje4.setText(String.valueOf(Variables.porcentaje4));
+
 		{
 			lblNewLabel_4 = new JLabel("%");
 			lblNewLabel_4.setBounds(302, 36, 46, 14);
@@ -164,6 +160,12 @@ public class frmConfigurarDescuentos extends JDialog implements ActionListener {
 			lblErrorPorcentaje4.setBounds(131, 180, 217, 14);
 			contentPanel.add(lblErrorPorcentaje4);
 		}
+		
+		//Inicializacion
+		txtPorcentaje1.setText(String.valueOf(Variables.porcentaje1));
+		txtPorcentaje2.setText(String.valueOf(Variables.porcentaje2));
+		txtPorcentaje3.setText(String.valueOf(Variables.porcentaje3));
+		txtPorcentaje4.setText(String.valueOf(Variables.porcentaje4));
 	}
 
 	public void actionPerformed(ActionEvent e) {
