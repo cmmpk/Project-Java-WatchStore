@@ -152,7 +152,9 @@ public class frmConsultar extends JDialog implements ActionListener {
 		switch(pos) {
 			case 0://marca 1 pos 0
 				txtModelo.setText(String.valueOf(Variables.modelo0));
+				//agregarle el indice al cbo
 				cboTipo.setSelectedIndex(Variables.tipo0);
+				//..
 				txtPrecio.setText(String.valueOf(Variables.precio0));
 				txtDiametro.setText(String.valueOf(Variables.diametro0));
 				txtGrosor.setText(String.valueOf(Variables.grosor0));

@@ -256,7 +256,7 @@ public class frmModificar extends JDialog implements ActionListener {
 	protected void actionPerformedBtnGuardar(ActionEvent e) {
 		
 	    // Validación
-	    boolean precioOk	= Validaciones.validarCampoDecimal(txtPrecio,lblErrorPrecio);
+	    boolean precioOk	= Validaciones.validarCampoDecimal(txtPrecio,lblErrorPrecio); //true or false
 		boolean diametroOk	= Validaciones.validarCampoDecimal(txtDiametro, lblErrorDiametro);
 		boolean grosorOk	= Validaciones.validarCampoDecimal(txtGrosor, lblErrorGrosor);
 		boolean resistenciaOk = Validaciones.validarCampoEntero(txtResistencia, lblErrorResistencia);
@@ -264,7 +264,7 @@ public class frmModificar extends JDialog implements ActionListener {
 	    if (!precioOk|!diametroOk|!grosorOk|!resistenciaOk|!modeloOk ) {
 	        return;
 	    }
-		
+		//Inicio del metodoGuardar
 		int marca;
 		marca = cboMarca.getSelectedIndex();
 		switch (marca) {

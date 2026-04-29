@@ -166,7 +166,7 @@ public class frmVender extends JDialog implements ActionListener {
 	
 	protected void actionPerformedBtnVender(ActionEvent e) {
 		// Validación
-	    boolean cantidadOk	= Validaciones.validarCampoDecimal(txtCantidad,lblErrorCantidad);
+	    boolean cantidadOk	= Validaciones.validarCampoEntero(txtCantidad,lblErrorCantidad);
 	    if (!cantidadOk ) {
 	        return;
 	    }
@@ -175,9 +175,9 @@ public class frmVender extends JDialog implements ActionListener {
 		double precio,ic,id,ip;
 		String obs;
 		//entradas
-		marca = getMarca();
-		can = getCantidad();
-		precio = getPrecio();
+		marca = getMarca();//
+		can = getCantidad(); // cantidad
+		precio = getPrecio(); //
 		//procesos
 		ic = getImporteCompra(can, precio);
 		id = getImporteDescuento(can, precio);
@@ -209,12 +209,12 @@ public class frmVender extends JDialog implements ActionListener {
 	double getImporteDescuento(int can, double ic){
 		double id;
 		if(can>=1 && can <=5) 
-			id = ic * (Variables.porcentaje1 * 0.01);
+			id = ic * (Variables.porcentaje1 * 0.01);   //(50) % -> (porcentaje1/100) (porcentaje1* 0.01)
 		else if(can>=6 && can <=10)
 			id = ic * (Variables.porcentaje2* 0.01);
 		else if(can>=11 && can<=15) 
 			id = ic * (Variables.porcentaje3* 0.01);
-		else 
+		else // >=16
 			id = ic * (Variables.porcentaje4* 0.01);
 
 		return id;
@@ -225,7 +225,7 @@ public class frmVender extends JDialog implements ActionListener {
 			obs = Variables.obsequio1;
 		else if(can>= 2 && can <=5) 
 			obs = Variables.obsequio2;
-		else
+		else//>5
 			obs = Variables.obsequio3;
 		return obs;
 	}
@@ -234,10 +234,10 @@ public class frmVender extends JDialog implements ActionListener {
 		String sMarca;
 		switch (marca) {
 			case 0:
-				sMarca = Variables.marca0;
+				sMarca = Variables.marca0;//Casio
 				break;
 			case 1:
-				sMarca = Variables.marca1;
+				sMarca = Variables.marca1;//Seiko
 				break;
 			case 2:
 				sMarca = Variables.marca2;
@@ -276,12 +276,12 @@ public class frmVender extends JDialog implements ActionListener {
 	
 	//Metodos sin retorno
 	void efectuarIncrementos(double ip) {
-		cVentas++;
-		aIPVentas+=ip;
+		cVentas++; //cVentas = cVentas +1
+		aIPVentas+=ip; //aIPVentas = aIPVentas+ip
 	}
 	
 	void mostrarResultados(int can, double precio, double ic, double id, double ip, int marca, String obs) {
-		String sMarca = getMarca(marca);
+		String sMarca = getMarca(marca);//0->"Casio", "Seiko"
 		String sModelo = getModelo(marca);
 		txtS.setText("BOLETA DE VENTA\n\n");
 		txtS.append("Marca \t\t: "+sMarca+"\n");

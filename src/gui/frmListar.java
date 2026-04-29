@@ -123,13 +123,14 @@ public class frmListar extends JDialog implements ActionListener {
 		txtS.append("Res. al Agua \t: "+Variables.resistencia4+" m"+"\n\n");	
 	}
 	
+	//Metodo con retorno
 	String obtenerTipoReloj(int tipo) {
 		String tipo_final;
 		switch (tipo) {
 		case 0:
-			tipo_final = "Automático";
+			tipo_final = "Analógico";
 			break;
-		default:
+		default://el 1
 			tipo_final = "Digital";
 			break;
 		}

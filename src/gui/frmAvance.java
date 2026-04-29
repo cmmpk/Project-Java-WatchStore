@@ -85,7 +85,7 @@ public class frmAvance extends JDialog implements ActionListener {
 		
 		//Inicializaciones
 		lblVentas.setText(String.valueOf(cVentas));
-		lblImporteTotal.setText(String.format("S/. %.2f", aIPVentas));
+		lblImporteTotal.setText(String.format("S/. %.2f", aIPVentas));//12.6666666 -> 12.66
 		lblPorcentajeCuota.setText(String.format("%.2f%%", getPorcentaje(aIPVentas))); //con formateo a 2 decimales
 	}
 

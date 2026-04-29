@@ -8,10 +8,11 @@ import javax.swing.JTextField;
 public class Validaciones {
 	public static boolean validarCampoDecimal(JTextField campo, JLabel lblError) {
 	    String texto = campo.getText();
-	    String textoSinEspacios = texto.trim();
+	    String textoSinEspacios = texto.trim(); //"123 4" -> "1234"
 
 	    try {
 	        if (texto.isEmpty()) {
+	        	//campo esta vacio
 	            throw new Exception("Campo vacío");
 	        }
 
@@ -19,7 +20,7 @@ public class Validaciones {
 	            throw new Exception("Ingrese un número válido");
 	        }
 
-	        Double.parseDouble(textoSinEspacios);
+	        Double.parseDouble(textoSinEspacios); //1234
 
 	        if (texto.contains(" ")) {
 	            throw new Exception("Ingrese un número válido");
