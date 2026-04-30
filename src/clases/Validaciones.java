@@ -20,7 +20,10 @@ public class Validaciones {
 	            throw new Exception("Ingrese un número válido");
 	        }
 
-	        Double.parseDouble(textoSinEspacios); //1234
+	        double valor = Double.parseDouble(textoSinEspacios); //1234
+            if (valor <= 0) {
+                throw new Exception("Ingrese números positivos");
+            }
 
 	        if (texto.contains(" ")) {
 	            throw new Exception("Ingrese un número válido");
@@ -57,7 +60,11 @@ public class Validaciones {
 	            throw new Exception("Ingrese un número válido");
 	        }
 
-	        Integer.parseInt(textoSinEspacios);
+	        int valor = Integer.parseInt(textoSinEspacios);
+	        
+	        if (valor <= 0) {
+                throw new Exception("Ingrese números positivos");
+            }
 
 	        if (texto.contains(" ")) {
 	            throw new Exception("Ingrese un número válido");
