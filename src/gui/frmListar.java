@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -41,7 +40,7 @@ public class frmListar extends JDialog implements ActionListener {
 	 */
 	public frmListar() {
 		setModal(true);
-		setTitle("Listado de Productos");
+		setTitle("Listado de Relojes");
 		setBounds(100, 100, 475, 503);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,35 +76,64 @@ public class frmListar extends JDialog implements ActionListener {
 		dispose();
 	}
 	protected void actionPerformedBtnListar(ActionEvent e) {
-		txtS.setText("LISTADO DE PRODUCTOS\n\n");
+		mostrarResultados();
+	}
+	
+	//Metodos
+	void mostrarResultados() {
+		txtS.setText("LISTADO DE RELOJES\n\n");
+		txtS.append("Marca \t: "+Variables.marca0+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo0+"\n");
-		txtS.append("Precio \t: "+Variables.precio0+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo0+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho0+"\n");
-		txtS.append("Alto \t: "+Variables.alto0+"\n\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo0)+"\n");
+		txtS.append("Precio \t: "+"S/. "+Variables.precio0+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro0+" mm"+"\n");
+		txtS.append("Grosor \t: "+Variables.grosor0+" mm"+"\n");
+		txtS.append("Res. al Agua \t: "+Variables.resistencia0+" m"+"\n\n");
 		
+		txtS.append("Marca \t: "+Variables.marca1+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo1+"\n");
-		txtS.append("Precio \t: "+Variables.precio1+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo1+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho1+"\n");
-		txtS.append("Alto \t: "+Variables.alto1+"\n\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo1)+"\n");
+		txtS.append("Precio \t: "+"S/. "+Variables.precio1+"\n");
+		txtS.append("Diametro\t: "+Variables.diametro1+" mm"+"\n");
+		txtS.append("Grosor \t: "+Variables.grosor1+" mm"+"\n");
+		txtS.append("Res. al Agua \t: "+Variables.resistencia1+" m"+"\n\n");
 		
+		txtS.append("Marca \t: "+Variables.marca2+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo2+"\n");
-		txtS.append("Precio \t: "+Variables.precio2+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo2+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho2+"\n");
-		txtS.append("Alto \t: "+Variables.alto2+"\n\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo2)+"\n");
+		txtS.append("Precio \t: "+"S/. "+Variables.precio2+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro2+" mm"+"\n");
+		txtS.append("Grosor \t: "+Variables.grosor2+" mm"+"\n");
+		txtS.append("Res. al Agua \t: "+Variables.resistencia2+" m"+"\n\n");
 		
+		txtS.append("Marca \t: "+Variables.marca3+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo3+"\n");
-		txtS.append("Precio \t: "+Variables.precio3+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo3+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho3+"\n");
-		txtS.append("Alto \t: "+Variables.alto3+"\n\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo3)+"\n");
+		txtS.append("Precio \t: "+"S/. "+Variables.precio3+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro3+" mm"+"\n");
+		txtS.append("Grosor \t: "+Variables.grosor3+" mm"+"\n");
+		txtS.append("Res. al Agua \t: "+Variables.resistencia3+" m"+"\n\n");
 		
+		txtS.append("Marca \t: "+Variables.marca4+"\n");
 		txtS.append("Modelo \t: "+Variables.modelo4+"\n");
-		txtS.append("Precio \t: "+Variables.precio4+"\n");
-		txtS.append("Profundidad \t: "+Variables.fondo4+"\n");
-		txtS.append("Ancho \t: "+Variables.ancho4+"\n");
-		txtS.append("Alto \t: "+Variables.alto4+"\n\n");
+		txtS.append("Tipo \t: "+obtenerTipoReloj(Variables.tipo4)+"\n");
+		txtS.append("Precio \t: "+"S/. "+Variables.precio4+"\n");
+		txtS.append("Diametro \t: "+Variables.diametro4+" mm"+"\n");
+		txtS.append("Grosor \t: "+Variables.grosor4+" mm"+"\n");
+		txtS.append("Res. al Agua \t: "+Variables.resistencia4+" m"+"\n\n");	
+	}
+	
+	//Metodo con retorno
+	String obtenerTipoReloj(int tipo) {
+		String tipo_final;
+		switch (tipo) {
+		case 0:
+			tipo_final = "Analógico";
+			break;
+		default://el 1
+			tipo_final = "Digital";
+			break;
+		}
+		return tipo_final;
 	}
 }

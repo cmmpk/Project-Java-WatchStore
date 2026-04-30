@@ -19,12 +19,12 @@ public class frmMenu extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JMenuItem mntmConsultar;
 	private JMenuItem mntmModificar;
-	private JMenuItem mntmNewMenuItem_1;
-	private JMenuItem mntmNewMenuItem_2;
-	private JMenuItem mntmNewMenuItem_3;
-	private JMenuItem mntmNewMenuItem_4;
+	private JMenuItem mntmVender;
+	private JMenuItem mntmConfigurarDescuentos;
+	private JMenuItem mntmConfigurarObsequios;
+	private JMenuItem mntmAcercaDeTienda;
 	private JMenuItem mntmListar;
-	private JMenuItem mntmNewMenuItem;
+	private JMenuItem mntmSalir;
 
 	/**
 	 * Launch the application.
@@ -54,47 +54,52 @@ public class frmMenu extends JFrame implements ActionListener {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Archivos");
+		JMenu mnNewMenu = new JMenu("Archivo");
 		menuBar.add(mnNewMenu);
 		
-		mntmNewMenuItem = new JMenuItem("Salir");
-		mnNewMenu.add(mntmNewMenuItem);
+		mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(this);
+		mnNewMenu.add(mntmSalir);
 		
 		JMenu mnNewMenu_1 = new JMenu("Mantenimiento");
 		menuBar.add(mnNewMenu_1);
 		
-		mntmConsultar = new JMenuItem("Consultar");
+		mntmConsultar = new JMenuItem("Consultar Relojes");
 		mntmConsultar.addActionListener(this);
 		mnNewMenu_1.add(mntmConsultar);
 		
-		mntmModificar = new JMenuItem("Modificar");
+		mntmModificar = new JMenuItem("Modificar Relojes");
 		mntmModificar.addActionListener(this);
 		mnNewMenu_1.add(mntmModificar);
 		
-		mntmListar = new JMenuItem("Listar");
+		mntmListar = new JMenuItem("Listar Relojes");
 		mntmListar.addActionListener(this);
 		mnNewMenu_1.add(mntmListar);
 		
 		JMenu mnNewMenu_2 = new JMenu("Venta");
 		menuBar.add(mnNewMenu_2);
 		
-		mntmNewMenuItem_1 = new JMenuItem("Vender");
-		mnNewMenu_2.add(mntmNewMenuItem_1);
+		mntmVender = new JMenuItem("Vender");
+		mntmVender.addActionListener(this);
+		mnNewMenu_2.add(mntmVender);
 		
 		JMenu mnNewMenu_3 = new JMenu("Configuracion");
 		menuBar.add(mnNewMenu_3);
 		
-		mntmNewMenuItem_2 = new JMenuItem("Configurar Descuentos");
-		mnNewMenu_3.add(mntmNewMenuItem_2);
+		mntmConfigurarDescuentos = new JMenuItem("Configurar Descuentos");
+		mntmConfigurarDescuentos.addActionListener(this);
+		mnNewMenu_3.add(mntmConfigurarDescuentos);
 		
-		mntmNewMenuItem_3 = new JMenuItem("Configurar Obsequios");
-		mnNewMenu_3.add(mntmNewMenuItem_3);
+		mntmConfigurarObsequios = new JMenuItem("Configurar Obsequios");
+		mntmConfigurarObsequios.addActionListener(this);
+		mnNewMenu_3.add(mntmConfigurarObsequios);
 		
 		JMenu mnNewMenu_4 = new JMenu("Ayuda");
 		menuBar.add(mnNewMenu_4);
 		
-		mntmNewMenuItem_4 = new JMenuItem("Acerca de Tienda");
-		mnNewMenu_4.add(mntmNewMenuItem_4);
+		mntmAcercaDeTienda = new JMenuItem("Acerca de Tienda");
+		mntmAcercaDeTienda.addActionListener(this);
+		mnNewMenu_4.add(mntmAcercaDeTienda);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -102,6 +107,15 @@ public class frmMenu extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmVender) {
+			actionPerformedMntmVender(e);
+		}
+		if (e.getSource() == mntmSalir) {
+			actionPerformedMntmSalir(e);
+		}
+		if (e.getSource() == mntmAcercaDeTienda) {
+			actionPerformedMntmAcercaDeTienda(e);
+		}
 		if (e.getSource() == mntmListar) {
 			actionPerformedMntmListar(e);
 		}
@@ -111,21 +125,43 @@ public class frmMenu extends JFrame implements ActionListener {
 		if (e.getSource() == mntmConsultar) {
 			actionPerformedMntmConsultar(e);
 		}
+		if (e.getSource() == mntmConfigurarObsequios) {
+			actionPerformedMntmConfigurarObsequios(e);
+		}
+		if (e.getSource() == mntmConfigurarDescuentos) {
+			actionPerformedMntmConfigurarDescuentos(e);
+		}
 	}
 	protected void actionPerformedMntmConsultar(ActionEvent e) {
-		//crear objeto (variable) del formulario frmConsultar
 		frmConsultar frm= new frmConsultar();
-		//mostrar objeto(variable) frm
 		frm.setVisible(true);
 	}
 	protected void actionPerformedMntmModificar(ActionEvent e) {
-		//crear objeto (variable) del formulario frmConsultar
 		frmModificar frm= new frmModificar();
-		//mostrar objeto(variable) frm
 		frm.setVisible(true);
 	}
 	protected void actionPerformedMntmListar(ActionEvent e) {
+		//listar productos en formulario
 		frmListar frm= new frmListar();
+		frm.setVisible(true);
+	}
+	protected void actionPerformedMntmConfigurarObsequios(ActionEvent e) {
+		frmConfigurarObsequios frm= new frmConfigurarObsequios();
+		frm.setVisible(true);
+	}
+	protected void actionPerformedMntmConfigurarDescuentos(ActionEvent e) {
+		frmConfigurarDescuentos frm= new frmConfigurarDescuentos();
+		frm.setVisible(true);
+	}
+	protected void actionPerformedMntmAcercaDeTienda(ActionEvent e) {
+		frmAcercaDeTienda frm= new frmAcercaDeTienda();
+		frm.setVisible(true);
+	}
+	protected void actionPerformedMntmSalir(ActionEvent e) {
+		System.exit(0);
+	}
+	protected void actionPerformedMntmVender(ActionEvent e) {
+		frmVender frm= new frmVender();
 		frm.setVisible(true);
 	}
 }

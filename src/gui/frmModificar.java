@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -8,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import clases.Validaciones;
 import clases.Variables;
 
 import javax.swing.JLabel;
@@ -22,12 +24,21 @@ public class frmModificar extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtPrecio;
-	private JTextField txtAncho;
-	private JTextField txtAlto;
-	private JTextField txtFondo;
-	private JComboBox cboModelo;
+	private JTextField txtModelo;
+	private JTextField txtDiametro;
+	private JTextField txtResistencia;
+	private JComboBox cboMarca;
 	private JButton btnGuardar;
 	private JButton btnCerrar;
+	private JLabel lblNewLabel_5;
+	private JLabel lblNewLabel_6;
+	private JTextField txtGrosor;
+	private JComboBox cboTipo;
+	private JLabel lblErrorPrecio;
+	private JLabel lblErrorDiametro;
+	private JLabel lblErrorGrosor;
+	private JLabel lblErrorResistencia;
+	private JLabel lblErrorModelo;
 
 	/**
 	 * Launch the application.
@@ -47,85 +58,140 @@ public class frmModificar extends JDialog implements ActionListener {
 	 */
 	public frmModificar() {
 		setModal(true);
-		setTitle("Modificar");
-		setBounds(100, 100, 450, 199);
+		setTitle("Modificar Reloj");
+		setBounds(100, 100, 526, 285);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblNewLabel = new JLabel("Modelo");
+			JLabel lblNewLabel = new JLabel("Marca");
 			lblNewLabel.setBounds(10, 25, 46, 14);
 			contentPanel.add(lblNewLabel);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Precio");
-			lblNewLabel_1.setBounds(10, 50, 46, 14);
+			JLabel lblNewLabel_1 = new JLabel("Precio (S/)");
+			lblNewLabel_1.setBounds(10, 119, 78, 14);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{
-			JLabel lblNewLabel_2 = new JLabel("Ancho");
-			lblNewLabel_2.setBounds(10, 75, 46, 14);
+			JLabel lblNewLabel_2 = new JLabel("Modelo");
+			lblNewLabel_2.setBounds(10, 57, 46, 14);
 			contentPanel.add(lblNewLabel_2);
 		}
 		{
-			JLabel lblNewLabel_3 = new JLabel("Alto");
-			lblNewLabel_3.setBounds(10, 100, 46, 14);
+			JLabel lblNewLabel_3 = new JLabel("Diametro (mm)");
+			lblNewLabel_3.setBounds(10, 150, 89, 14);
 			contentPanel.add(lblNewLabel_3);
 		}
 		{
-			JLabel lblNewLabel_4 = new JLabel("Fondo");
-			lblNewLabel_4.setBounds(10, 125, 46, 14);
+			JLabel lblNewLabel_4 = new JLabel("Res. al Agua (m)");
+			lblNewLabel_4.setBounds(10, 212, 95, 14);
 			contentPanel.add(lblNewLabel_4);
 		}
 		{
-			cboModelo = new JComboBox();
-			cboModelo.setModel(new DefaultComboBoxModel(new String[] {"LG LTCS20020W", "Samsung RB195ACRS", "Whirlpool WRT318FZDM", "Bosch B36BT930NS", "LG LSXS26366S"}));
-			cboModelo.addActionListener(this);
-			cboModelo.setBounds(80, 21, 138, 22);
-			contentPanel.add(cboModelo);
+			cboMarca = new JComboBox();
+			cboMarca.setModel(new DefaultComboBoxModel(new String[] {"Casio", "Seiko", "Hamilton", "Orient", "Tissot"}));
+			cboMarca.addActionListener(this);
+			cboMarca.setBounds(115, 21, 159, 22);
+			contentPanel.add(cboMarca);
 		}
 		{
 			txtPrecio = new JTextField();
-			txtPrecio.setBounds(80, 47, 138, 20);
+			txtPrecio.setBounds(115, 116, 159, 20);
 			contentPanel.add(txtPrecio);
 			txtPrecio.setColumns(10);
 		}
 		{
-			txtAncho = new JTextField();
-			txtAncho.setBounds(80, 72, 138, 20);
-			contentPanel.add(txtAncho);
-			txtAncho.setColumns(10);
+			txtModelo = new JTextField();
+			txtModelo.setBounds(115, 54, 159, 20);
+			contentPanel.add(txtModelo);
+			txtModelo.setColumns(10);
 		}
 		{
-			txtAlto = new JTextField();
-			txtAlto.setBounds(80, 97, 138, 20);
-			contentPanel.add(txtAlto);
-			txtAlto.setColumns(10);
+			txtDiametro = new JTextField();
+			txtDiametro.setBounds(115, 147, 159, 20);
+			contentPanel.add(txtDiametro);
+			txtDiametro.setColumns(10);
 		}
 		{
-			txtFondo = new JTextField();
-			txtFondo.setBounds(80, 122, 138, 20);
-			contentPanel.add(txtFondo);
-			txtFondo.setColumns(10);
+			txtResistencia = new JTextField();
+			txtResistencia.setBounds(115, 209, 159, 20);
+			contentPanel.add(txtResistencia);
+			txtResistencia.setColumns(10);
 		}
 		{
 			btnCerrar = new JButton("Cerrar");
 			btnCerrar.addActionListener(this);
-			btnCerrar.setBounds(335, 21, 89, 23);
+			btnCerrar.setBounds(411, 21, 89, 23);
 			contentPanel.add(btnCerrar);
 		}
 		{
 			btnGuardar = new JButton("Guardar");
 			btnGuardar.addActionListener(this);
-			btnGuardar.setBounds(335, 50, 89, 23);
+			btnGuardar.setBounds(411, 53, 89, 23);
 			contentPanel.add(btnGuardar);
 		}
+
+		{
+			lblNewLabel_5 = new JLabel("Tipo");
+			lblNewLabel_5.setBounds(10, 88, 46, 14);
+			contentPanel.add(lblNewLabel_5);
+		}
+		{
+			lblNewLabel_6 = new JLabel("Grosor (mm)");
+			lblNewLabel_6.setBounds(10, 185, 89, 14);
+			contentPanel.add(lblNewLabel_6);
+		}
+		{
+			txtGrosor = new JTextField();
+			txtGrosor.setBounds(115, 178, 159, 20);
+			contentPanel.add(txtGrosor);
+			txtGrosor.setColumns(10);
+		}
 		
+		cboTipo = new JComboBox();
+		cboTipo.setModel(new DefaultComboBoxModel(new String[] {"Analógico", "Digital"}));
+		cboTipo.setBounds(115, 85, 159, 22);
+		contentPanel.add(cboTipo);
+		
+		{
+			lblErrorPrecio = new JLabel("");
+			lblErrorPrecio.setVisible(false);
+			lblErrorPrecio.setBounds(284, 119, 216, 14);
+			contentPanel.add(lblErrorPrecio);
+		}
+		{
+			lblErrorDiametro = new JLabel("");
+			lblErrorDiametro.setVisible(false);
+			lblErrorDiametro.setBounds(284, 150, 216, 14);
+			contentPanel.add(lblErrorDiametro);
+		}
+		{
+			lblErrorGrosor = new JLabel("");
+			lblErrorGrosor.setVisible(false);
+			lblErrorGrosor.setBounds(284, 181, 216, 14);
+			contentPanel.add(lblErrorGrosor);
+		}
+		{
+			lblErrorResistencia = new JLabel("");
+			lblErrorResistencia.setVisible(false);
+			lblErrorResistencia.setBounds(284, 212, 216, 14);
+			contentPanel.add(lblErrorResistencia);
+		}
+		{
+			lblErrorModelo = new JLabel("");
+			lblErrorModelo.setBounds(284, 57, 117, 14);
+			contentPanel.add(lblErrorModelo);
+		}
+		
+		//Variables iniciales
+		txtModelo.setText(String.valueOf(Variables.modelo0));
+		cboTipo.setSelectedIndex(Variables.tipo0); //0 o 1
 		txtPrecio.setText(String.valueOf(Variables.precio0));
-		txtAncho.setText(String.valueOf(Variables.ancho0));
-		txtAlto.setText(String.valueOf(Variables.alto0));
-		txtFondo.setText(String.valueOf(Variables.fondo0));
+		txtDiametro.setText(String.valueOf(Variables.diametro0));
+		txtGrosor.setText(String.valueOf(Variables.grosor0));
+		txtResistencia.setText(String.valueOf(Variables.resistencia0));
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -135,87 +201,117 @@ public class frmModificar extends JDialog implements ActionListener {
 		if (e.getSource() == btnGuardar) {
 			actionPerformedBtnGuardar(e);
 		}
-		if (e.getSource() == cboModelo) {
+		if (e.getSource() == cboMarca) {
 			actionPerformedCboModelo(e);
 		}
 	}
-	protected void actionPerformedCboModelo(ActionEvent e) {
-		//variable
+	protected void actionPerformedCboModelo(ActionEvent e) {		
+		//variables
 		int pos;
-		pos = cboModelo.getSelectedIndex();
+		pos = cboMarca.getSelectedIndex();
 		switch(pos) {
-			case 0://modelo 1 pos 0
+			case 0://marca 1 pos 0
+				txtModelo.setText(String.valueOf(Variables.modelo0));
+				cboTipo.setSelectedIndex(Variables.tipo0);
 				txtPrecio.setText(String.valueOf(Variables.precio0));
-				txtAncho.setText(String.valueOf(Variables.ancho0));
-				txtAlto.setText(String.valueOf(Variables.alto0));
-				txtFondo.setText(String.valueOf(Variables.fondo0));
+				txtDiametro.setText(String.valueOf(Variables.diametro0));
+				txtGrosor.setText(String.valueOf(Variables.grosor0));
+				txtResistencia.setText(String.valueOf(Variables.resistencia0));
 				break;
-			case 1://modelo 2 pos 1
+			case 1://marca 2 pos 1
+				txtModelo.setText(String.valueOf(Variables.modelo1));
+				cboTipo.setSelectedIndex(Variables.tipo1);
 				txtPrecio.setText(String.valueOf(Variables.precio1));
-				txtAncho.setText(String.valueOf(Variables.ancho1));
-				txtAlto.setText(String.valueOf(Variables.alto1));
-				txtFondo.setText(String.valueOf(Variables.fondo1));
+				txtDiametro.setText(String.valueOf(Variables.diametro1));
+				txtGrosor.setText(String.valueOf(Variables.grosor1));
+				txtResistencia.setText(String.valueOf(Variables.resistencia1));
 				break;
-			case 2://modelo 3 pos 2
+			case 2://marca 3 pos 2
+				txtModelo.setText(String.valueOf(Variables.modelo2));
+				cboTipo.setSelectedIndex(Variables.tipo2);
 				txtPrecio.setText(String.valueOf(Variables.precio2));
-				txtAncho.setText(String.valueOf(Variables.ancho2));
-				txtAlto.setText(String.valueOf(Variables.alto2));
-				txtFondo.setText(String.valueOf(Variables.fondo2));
+				txtDiametro.setText(String.valueOf(Variables.diametro2));
+				txtGrosor.setText(String.valueOf(Variables.grosor2));
+				txtResistencia.setText(String.valueOf(Variables.resistencia2));
 				break;
-			case 3://modelo 4 pos 3
+			case 3://marca 4 pos 3
+				txtModelo.setText(String.valueOf(Variables.modelo3));
+				cboTipo.setSelectedIndex(Variables.tipo3);
 				txtPrecio.setText(String.valueOf(Variables.precio3));
-				txtAncho.setText(String.valueOf(Variables.ancho3));
-				txtAlto.setText(String.valueOf(Variables.alto3));
-				txtFondo.setText(String.valueOf(Variables.fondo3));
+				txtDiametro.setText(String.valueOf(Variables.diametro3));
+				txtGrosor.setText(String.valueOf(Variables.grosor3));
+				txtResistencia.setText(String.valueOf(Variables.resistencia3));
 				break;
-			default://modelo 4 pos 3
+			default://marca 4 pos 3
+				txtModelo.setText(String.valueOf(Variables.modelo4));
+				cboTipo.setSelectedIndex(Variables.tipo4);
 				txtPrecio.setText(String.valueOf(Variables.precio4));
-				txtAncho.setText(String.valueOf(Variables.ancho4));
-				txtAlto.setText(String.valueOf(Variables.alto4));
-				txtFondo.setText(String.valueOf(Variables.fondo4));
+				txtDiametro.setText(String.valueOf(Variables.diametro4));
+				txtGrosor.setText(String.valueOf(Variables.grosor4));
+				txtResistencia.setText(String.valueOf(Variables.resistencia4));
 				break;
 		
 		}
 	}
 	protected void actionPerformedBtnGuardar(ActionEvent e) {
-		//obtener posicion del elemento seleccionado
+		
+	    // Validación
+	    boolean precioOk	= Validaciones.validarCampoDecimal(txtPrecio,lblErrorPrecio); //true or false
+		boolean diametroOk	= Validaciones.validarCampoDecimal(txtDiametro, lblErrorDiametro);
+		boolean grosorOk	= Validaciones.validarCampoDecimal(txtGrosor, lblErrorGrosor);
+		boolean resistenciaOk = Validaciones.validarCampoEntero(txtResistencia, lblErrorResistencia);
+		boolean modeloOk	= Validaciones.validarCampoTexto(txtModelo, lblErrorModelo, 50);
+	    if (!precioOk|!diametroOk|!grosorOk|!resistenciaOk|!modeloOk ) {
+	        return;
+	    }
+		//Inicio del metodoGuardar
 		int marca;
-		marca = cboModelo.getSelectedIndex();
+		marca = cboMarca.getSelectedIndex();
 		switch (marca) {
 			case 0:
 				//actualizando variables globales
+				Variables.modelo0 = txtModelo.getText();
+				Variables.tipo0 = cboTipo.getSelectedIndex();
 				Variables.precio0 = Double.parseDouble(txtPrecio.getText());
-				Variables.ancho0 = Double.parseDouble(txtAncho.getText());
-				Variables.alto0 = Double.parseDouble(txtAlto.getText());
-				Variables.fondo0 = Double.parseDouble(txtFondo.getText());
+				Variables.diametro0 = Double.parseDouble(txtDiametro.getText());
+				Variables.grosor0 = Double.parseDouble(txtGrosor.getText());
+				Variables.resistencia0 = Integer.parseInt(txtResistencia.getText());
 				break;
 			case 1:
 				//actualizando variables globales
+				Variables.modelo1 = txtModelo.getText();
+				Variables.tipo1 = cboTipo.getSelectedIndex();
 				Variables.precio1 = Double.parseDouble(txtPrecio.getText());
-				Variables.ancho1 = Double.parseDouble(txtAncho.getText());
-				Variables.alto1 = Double.parseDouble(txtAlto.getText());
-				Variables.fondo1 = Double.parseDouble(txtFondo.getText());
+				Variables.diametro1 = Double.parseDouble(txtDiametro.getText());
+				Variables.grosor1 = Double.parseDouble(txtGrosor.getText());
+				Variables.resistencia1 = Integer.parseInt(txtResistencia.getText());
 				break;
 			case 2:
 				//actualizando variables globales
+				Variables.modelo2 = txtModelo.getText();
+				Variables.tipo2 = cboTipo.getSelectedIndex();
 				Variables.precio2 = Double.parseDouble(txtPrecio.getText());
-				Variables.ancho2 = Double.parseDouble(txtAncho.getText());
-				Variables.alto2 = Double.parseDouble(txtAlto.getText());
-				Variables.fondo2 = Double.parseDouble(txtFondo.getText());
+				Variables.diametro2 = Double.parseDouble(txtDiametro.getText());
+				Variables.grosor2 = Double.parseDouble(txtGrosor.getText());
+				Variables.resistencia2 = Integer.parseInt(txtResistencia.getText());
 				break;
 			case 3:
 				//actualizando variables globales
+				Variables.modelo3 = txtModelo.getText();
+				Variables.tipo3 = cboTipo.getSelectedIndex();
 				Variables.precio3 = Double.parseDouble(txtPrecio.getText());
-				Variables.ancho3 = Double.parseDouble(txtAncho.getText());
-				Variables.alto3 = Double.parseDouble(txtAlto.getText());
-				Variables.fondo3 = Double.parseDouble(txtFondo.getText());
+				Variables.diametro3 = Double.parseDouble(txtDiametro.getText());
+				Variables.grosor3 = Double.parseDouble(txtGrosor.getText());
+				Variables.resistencia3 = Integer.parseInt(txtResistencia.getText());
 				break;
 	
 			default:
+				Variables.modelo4 = txtModelo.getText();
+				Variables.tipo4 = cboTipo.getSelectedIndex();
 				Variables.precio4 = Double.parseDouble(txtPrecio.getText());
-				Variables.ancho4 = Double.parseDouble(txtAncho.getText());
-				Variables.alto4 = Double.parseDouble(txtAlto.getText());
-				Variables.fondo4 = Double.parseDouble(txtFondo.getText());
+				Variables.diametro4 = Double.parseDouble(txtDiametro.getText());
+				Variables.grosor4 = Double.parseDouble(txtGrosor.getText());
+				Variables.resistencia4 = Integer.parseInt(txtResistencia.getText());
 				break;
 		}
 		dispose();

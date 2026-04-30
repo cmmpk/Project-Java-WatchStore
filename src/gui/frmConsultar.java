@@ -21,12 +21,14 @@ public class frmConsultar extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField txtAncho;
-	private JTextField txtAlto;
-	private JTextField txtFondo;
-	private JComboBox cboModelo;
+	private JTextField txtModelo;
+	private JTextField txtDiametro;
+	private JComboBox cboMarca;
 	private JTextField txtPrecio;
 	private JButton btnCerrar;
+	private JTextField txtGrosor;
+	private JTextField txtResistencia;
+	private JComboBox cboTipo;
 
 	/**
 	 * Launch the application.
@@ -47,30 +49,30 @@ public class frmConsultar extends JDialog implements ActionListener {
 	public frmConsultar() {
 		setTitle("Consultar");
 		setModal(true);
-		setBounds(100, 100, 450, 229);
+		setBounds(100, 100, 449, 284);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Modelo");
-		lblNewLabel.setBounds(10, 24, 46, 14);
+		JLabel lblNewLabel = new JLabel("Marca");
+		lblNewLabel.setBounds(10, 24, 95, 14);
 		contentPanel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Precio");
-		lblNewLabel_1.setBounds(10, 56, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("Precio (S/)");
+		lblNewLabel_1.setBounds(10, 117, 82, 14);
 		contentPanel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Ancho");
-		lblNewLabel_2.setBounds(10, 87, 46, 14);
+		JLabel lblNewLabel_2 = new JLabel("Modelo");
+		lblNewLabel_2.setBounds(10, 55, 82, 14);
 		contentPanel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Alto");
-		lblNewLabel_3.setBounds(10, 118, 46, 14);
+		JLabel lblNewLabel_3 = new JLabel("Diametro (mm)");
+		lblNewLabel_3.setBounds(10, 148, 95, 14);
 		contentPanel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Fondo");
-		lblNewLabel_4.setBounds(10, 153, 46, 14);
+		JLabel lblNewLabel_4 = new JLabel("Tipo");
+		lblNewLabel_4.setBounds(10, 86, 46, 14);
 		contentPanel.add(lblNewLabel_4);
 		
 		btnCerrar = new JButton("Cerrar");
@@ -78,86 +80,118 @@ public class frmConsultar extends JDialog implements ActionListener {
 		btnCerrar.setBounds(335, 20, 89, 23);
 		contentPanel.add(btnCerrar);
 		
-		cboModelo = new JComboBox();
-		cboModelo.addActionListener(this);
-		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"LG LTCS20020W", "Samsung RB195ACRS", "Whirlpool WRT318FZDM", "Bosch B36BT930NS", "LG LSXS26366S"}));
-		cboModelo.setBounds(80, 20, 155, 22);
-		contentPanel.add(cboModelo);
+		cboMarca = new JComboBox();
+		cboMarca.addActionListener(this);
+		cboMarca.setModel(new DefaultComboBoxModel(new String[] {"Casio", "Seiko", "Hamilton", "Orient", "Tissot"}));
+		cboMarca.setBounds(115, 20, 155, 22);
+		contentPanel.add(cboMarca);
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setEditable(false);
-		txtPrecio.setBounds(80, 53, 155, 20);
+		txtPrecio.setBounds(115, 114, 155, 20);
 		contentPanel.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
-		txtAncho = new JTextField();
-		txtAncho.setEditable(false);
-		txtAncho.setBounds(80, 84, 155, 20);
-		contentPanel.add(txtAncho);
-		txtAncho.setColumns(10);
+		txtModelo = new JTextField();
+		txtModelo.setEditable(false);
+		txtModelo.setBounds(115, 52, 155, 20);
+		contentPanel.add(txtModelo);
+		txtModelo.setColumns(10);
 		
-		txtAlto = new JTextField();
-		txtAlto.setEditable(false);
-		txtAlto.setBounds(80, 115, 155, 20);
-		contentPanel.add(txtAlto);
-		txtAlto.setColumns(10);
+		txtDiametro = new JTextField();
+		txtDiametro.setEditable(false);
+		txtDiametro.setBounds(115, 145, 155, 20);
+		contentPanel.add(txtDiametro);
+		txtDiametro.setColumns(10);
 		
-		txtFondo = new JTextField();
-		txtFondo.setEditable(false);
-		txtFondo.setBounds(80, 150, 155, 20);
-		contentPanel.add(txtFondo);
-		txtFondo.setColumns(10);
+		JLabel lblNewLabel_5 = new JLabel("Grosor (mm)");
+		lblNewLabel_5.setBounds(10, 179, 82, 14);
+		contentPanel.add(lblNewLabel_5);
 		
-		//variables inciales para el cboModelo
+		txtGrosor = new JTextField();
+		txtGrosor.setEditable(false);
+		txtGrosor.setBounds(115, 176, 155, 20);
+		contentPanel.add(txtGrosor);
+		txtGrosor.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("Res. al Agua (m)");
+		lblNewLabel_6.setBounds(10, 210, 95, 14);
+		contentPanel.add(lblNewLabel_6);
+		
+		txtResistencia = new JTextField();
+		txtResistencia.setEditable(false);
+		txtResistencia.setBounds(115, 207, 155, 20);
+		contentPanel.add(txtResistencia);
+		txtResistencia.setColumns(10);
+		
+		cboTipo = new JComboBox();
+		cboTipo.setModel(new DefaultComboBoxModel(new String[] {"Analógico", "Digital"}));
+		cboTipo.setBounds(115, 82, 155, 22);
+		contentPanel.add(cboTipo);
+		
+		//variables inciales
+		txtModelo.setText(String.valueOf(Variables.modelo0));
+		cboTipo.setSelectedIndex(Variables.tipo0);
 		txtPrecio.setText(String.valueOf(Variables.precio0));
-		txtAncho.setText(String.valueOf(Variables.ancho0));
-		txtAlto.setText(String.valueOf(Variables.alto0));
-		txtFondo.setText(String.valueOf(Variables.fondo0));
+		txtDiametro.setText(String.valueOf(Variables.diametro0));
+		txtGrosor.setText(String.valueOf(Variables.grosor0));
+		txtResistencia.setText(String.valueOf(Variables.resistencia0));
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCerrar) {
 			actionPerformedBtnCerrar(e);
 		}
-		if (e.getSource() == cboModelo) {
+		if (e.getSource() == cboMarca) {
 			actionPerformedCboModelo(e);
 		}
 	}
 	protected void actionPerformedCboModelo(ActionEvent e) {
 		//variable
 		int pos;
-		pos = cboModelo.getSelectedIndex();
+		pos = cboMarca.getSelectedIndex();
 		switch(pos) {
-			case 0://modelo 1 pos 0
+			case 0://marca 1 pos 0
+				txtModelo.setText(String.valueOf(Variables.modelo0));
+				//agregarle el indice al cbo
+				cboTipo.setSelectedIndex(Variables.tipo0);
+				//..
 				txtPrecio.setText(String.valueOf(Variables.precio0));
-				txtAncho.setText(String.valueOf(Variables.ancho0));
-				txtAlto.setText(String.valueOf(Variables.alto0));
-				txtFondo.setText(String.valueOf(Variables.fondo0));
+				txtDiametro.setText(String.valueOf(Variables.diametro0));
+				txtGrosor.setText(String.valueOf(Variables.grosor0));
+				txtResistencia.setText(String.valueOf(Variables.resistencia0));
 				break;
-			case 1://modelo 2 pos 1
+			case 1://marca 2 pos 1
+				txtModelo.setText(String.valueOf(Variables.modelo1));
+				cboTipo.setSelectedIndex(Variables.tipo1);
 				txtPrecio.setText(String.valueOf(Variables.precio1));
-				txtAncho.setText(String.valueOf(Variables.ancho1));
-				txtAlto.setText(String.valueOf(Variables.alto1));
-				txtFondo.setText(String.valueOf(Variables.fondo1));
+				txtDiametro.setText(String.valueOf(Variables.diametro1));
+				txtGrosor.setText(String.valueOf(Variables.grosor1));
+				txtResistencia.setText(String.valueOf(Variables.resistencia1));
 				break;
-			case 2://modelo 3 pos 2
+			case 2://marca 3 pos 2
+				txtModelo.setText(String.valueOf(Variables.modelo2));
+				cboTipo.setSelectedIndex(Variables.tipo2);
 				txtPrecio.setText(String.valueOf(Variables.precio2));
-				txtAncho.setText(String.valueOf(Variables.ancho2));
-				txtAlto.setText(String.valueOf(Variables.alto2));
-				txtFondo.setText(String.valueOf(Variables.fondo2));
+				txtDiametro.setText(String.valueOf(Variables.diametro2));
+				txtGrosor.setText(String.valueOf(Variables.grosor2));
+				txtResistencia.setText(String.valueOf(Variables.resistencia2));
 				break;
-			case 3://modelo 4 pos 3
+			case 3://marca 4 pos 3
+				txtModelo.setText(String.valueOf(Variables.modelo3));
+				cboTipo.setSelectedIndex(Variables.tipo3);
 				txtPrecio.setText(String.valueOf(Variables.precio3));
-				txtAncho.setText(String.valueOf(Variables.ancho3));
-				txtAlto.setText(String.valueOf(Variables.alto3));
-				txtFondo.setText(String.valueOf(Variables.fondo3));
+				txtDiametro.setText(String.valueOf(Variables.diametro3));
+				txtGrosor.setText(String.valueOf(Variables.grosor3));
+				txtResistencia.setText(String.valueOf(Variables.resistencia3));
 				break;
-			default://modelo 4 pos 3
+			default://marca 4 pos 3
+				txtModelo.setText(String.valueOf(Variables.modelo4));
+				cboTipo.setSelectedIndex(Variables.tipo4);
 				txtPrecio.setText(String.valueOf(Variables.precio4));
-				txtAncho.setText(String.valueOf(Variables.ancho4));
-				txtAlto.setText(String.valueOf(Variables.alto4));
-				txtFondo.setText(String.valueOf(Variables.fondo4));
+				txtDiametro.setText(String.valueOf(Variables.diametro4));
+				txtGrosor.setText(String.valueOf(Variables.grosor4));
+				txtResistencia.setText(String.valueOf(Variables.resistencia4));
 				break;
-		
 		}
 		
 	}
